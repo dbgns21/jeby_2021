@@ -1,5 +1,4 @@
 """config URL Configuration
-
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/3.2/topics/http/urls/
 Examples:
@@ -14,8 +13,12 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
+from news import views as views_news
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path("", views_news.index),
+    path("admin/", admin.site.urls),
+    path("common/", include("common.urls")),
+    path("news/", include("news.urls")),
 ]
